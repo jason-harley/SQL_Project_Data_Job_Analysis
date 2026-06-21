@@ -19,7 +19,8 @@ WHERE
     AND salary_year_avg IS NOT NULL -- requires listed salary
 GROUP BY
     skills
-HAVING COUNT(skills_job_dim.job_id) > 5
+HAVING
+    COUNT(skills_job_dim.job_id) > 5
 ORDER BY 
     skill_avg_salary DESC
 LIMIT 10
