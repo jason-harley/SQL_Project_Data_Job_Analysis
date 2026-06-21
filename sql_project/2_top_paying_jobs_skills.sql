@@ -6,10 +6,8 @@ Question: What skills are required for the top-paying Data Analyst jobs?
     helping job seekers understand which skills to develop that align with top salaries
 */
 
--- We use the first query within a CTE
-
 WITH top_paying_jobs AS (
--- First query (to find top-paying roles)
+-- We use the first query within a CTE
     SELECT
         job_id,
         job_title,
@@ -35,10 +33,8 @@ SELECT
     skills
 FROM 
     top_paying_jobs
--- We use inner joins as we do not care for jobs which do not have any skills listed
+-- We use inner joins to exclude jobs which do not have any skills listed
 INNER JOIN skills_job_dim ON top_paying_jobs.job_id = skills_job_dim.job_id
 INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
 ORDER BY
-    salary DESC
-
--- Use chatGPT to analyse excel export of results!
+    salary DESC;
